@@ -1,0 +1,16 @@
+package cn.xx.thread;
+
+public class TestThread {
+
+	public static void main(String[] args) {
+		Runner r = new Runner();
+		r.run();
+	}
+
+}
+
+class Runner implements Runnable {
+	public void run() {
+		System.out.println("Runner run");
+	}
+}
