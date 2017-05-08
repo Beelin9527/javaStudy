@@ -10,7 +10,7 @@ package cn.xx.thread;
 public class TestThread {
 
 	public static void main(String[] args) {
-		run2();
+		run4();
 	}
 	
 	public static void run1() {
@@ -47,6 +47,16 @@ public class TestThread {
 		System.out.println("t1线程的优先级是：" + r.getPriority());
       // 使用getPriority()方法取得线程的优先级别
 	}
+	
+	//同步锁
+	public static void run4() {
+		Runner3 r = new Runner3();
+		for (int i = 0; i < 100; i ++) {
+			Thread t = new Thread(r);
+			t.start();
+		}
+		
+	}
 
 }
 
@@ -60,5 +70,17 @@ class Runner1 implements Runnable {
 class Runner2 extends Thread {
 	public void run() {
 		System.out.println("Runner2 run");
+	}
+}
+
+/*卖票 实现synchronized*/
+class Runner3 implements Runnable {
+	public static int tickerCount = 100;
+	public void run() {
+		synchronized (this) {
+			if (tickerCount == 0) return;
+			tickerCount --;
+			System.out.println("票还剩" + tickerCount + "张");
+		}
 	}
 }

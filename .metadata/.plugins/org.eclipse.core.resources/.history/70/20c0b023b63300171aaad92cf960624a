@@ -1,0 +1,5 @@
+package cn.xx.serializable;
+
+public class Person {
+
+}
